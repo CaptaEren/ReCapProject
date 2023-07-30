@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrate
 {
-    public class Cars:IEntity
+    public class Car:IEntity
     {
         public int CarId { get; set; }
         public int BrandId { get; set; }

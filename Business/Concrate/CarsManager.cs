@@ -18,11 +18,31 @@ namespace Business.Concrate
             _carsDal = carsDal;
         }
 
-        public List<Cars> GetAll()
+        public void Add(Car car)
+        {
+            if (car.Description.Length >= 2 && car.DailyPrice>0)
+            {
+                _carsDal.Add(car);
+            }
+            else
+            {
+                Console.WriteLine("Araba ismi minimum 2 karakter olmalıdır yada Araba günlük fiyatı 0 TL'den büyük olmalıdır.");
+            }
+        }
+
+        public List<Car> GetAll()
         {
             return _carsDal.GetAll();
         }
 
-       
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carsDal.GetAll(p=>p.BrandId==id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carsDal.GetAll(p => p.ColorId == id);
+        }
     }
 }
