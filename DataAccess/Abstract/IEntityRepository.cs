@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IEntityRepository<T> where T:class,IEntity
+    public interface IEntityRepository<T> where T:class,IEntity,new()
     {
         List<T> GetAll(Expression<Func<T,bool>>? filter=null);
 
