@@ -1,13 +1,13 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrate
+namespace Entities.Concrete
 {
-    public class Car:IEntity
+    public class Car : IEntity
     {
         public int CarId { get; set; }
         public int BrandId { get; set; }
