@@ -1,4 +1,5 @@
-﻿using Business.Abstract.Service;
+﻿using Business.Abstract;
+using Core.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -19,39 +20,32 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand t)
+        public IResult Add(Brand brand)
         {
-            _brandDal.Add(t);
+            _brandDal.Add(brand);
+            return new SuccessResult();
         }
 
-        public void Delete(Brand t)
+        public IResult Delete(Brand brand)
         {
-            _brandDal.Delete(t);
+            _brandDal.Delete(brand);
+            return new SuccessResult();
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            return new SuccesDataResult<List<Brand>>(_brandDal.GetAll());
         }
 
-        //public List<Brand> GetBrandByCarId(int id)
-        //{
-        //    return _brandDal.GetAll(b =>b.BrandId==);
-        //}
-
-        //public List<Brand> GetBrandByColorId(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        public Brand GetById(int id)
+        public IDataResult<Brand> GetById(int brandId)
         {
-            return _brandDal.Get(b=>b.BrandId==id);
+            return new SuccesDataResult<Brand>( _brandDal.Get(b=>b.BrandId==brandId));
         }
 
-        public void Update(Brand t)
+        public IResult Update(Brand brand)
         {
-            _brandDal.Update(t);
+            _brandDal.Update(brand);
+            return new SuccessResult();
         }
     }
 }
