@@ -35,7 +35,7 @@ public class Program
         CarManager carsManager = new CarManager(new EfCarDal());
         foreach (var Cars in carsManager.GetAll())
         {
-            Console.WriteLine(Cars.Description);
+            Console.WriteLine(Cars);
         }
         Console.WriteLine("-----------------------------------------------");
 
