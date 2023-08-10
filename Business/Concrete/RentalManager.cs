@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Entities;
 using Core.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -22,12 +23,19 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
-            if (rental.RetunDate == null && rental.RentDate==null)
+            var exist_Rental = _rentalDal.Get(r => r.CarId == rental.CarId && r.ReturnDate == default);
+
+            if (exist_Rental!=null)
             {
-               return new ErrorResult("Araç Halen Kullanımda dır!");
+                return new ErrorResult("Araç Halen Kullanımda dır!");
+                throw new Exception("Araç Halen Kullanımda dır!");
             }
-            _rentalDal.Add(rental);
-            return new SuccessResult("Araç Kiralanmıştır");
+            else
+            {
+                _rentalDal.Add(rental);
+                return new SuccessResult("Araç Kiralanmıştır");
+            }
+           
         }
 
         public IResult Delete(Rental rental)
@@ -38,12 +46,12 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccesDataResult<List<Rental>>(_rentalDal.GetAll());
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
         public IDataResult<Rental> GetById(int rentalId)
         {
-            return new SuccesDataResult<Rental>(_rentalDal.Get(c => c.RentalId == rentalId));
+            return new SuccessDataResult<Rental>(_rentalDal.Get(c => c.RentalId == rentalId));
         }
 
         public IResult Update(Rental rental)

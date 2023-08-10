@@ -1,59 +1,40 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Core.DataAccess.EntityFramework;
+using DataAccess.Concrate.EntityFramework;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
+using System.Diagnostics.CodeAnalysis;
 
 public class Program
 {
     private static void Main(string[] args)
     {
-        //CarTest();
-        //CarTest2();
-        //DetailsTest();
-        CarAddTest();
+
+        //ICarService carService = new CarManager(new EfCarDal());
+        //carService.Add(new Car { BrandId = 2,ColorId =2,DailyPrice=800,ModelYear=2013,Description="BMW M3 1.6" });
+
+        //IBrandService brandService = new BrandManager(new EfBrandDal());
+        //brandService.Add(new Brand { BrandId=1,BrandName="Toyata"});
+        //brandService.Add(new Brand { BrandId = 2, BrandName = "BMW" });
+        //brandService.Add(new Brand { BrandId = 3, BrandName = "Mercedes" });
+
+
+        //IColorService colorService= new ColorManager(new EfColorDal());
+        //colorService.Add(new Color {ColorId=1,ColorName="Beyaz" });
+        //colorService.Add(new Color { ColorId = 2, ColorName = "Siyah" });
+
+        //IUserService userService = new UserManager(new EfUserDal());
+        //userService.Add(new User { FirstName ="Mehmet Eren",LastName="Çiftçi",Email="mehmetciftci142@gmail.com",Password="Eren123"});
+
+        //ICustomerService customerService=new CustomerManager(new EfCustomerDal());
+        //customerService.Add(new Customer { UserId = 1,CompanyName="Eren Software" });
+        
+
+        IRentalService rentalService= new RentalManager(new EfRentalDal());
+        rentalService.Add(new Rental { CarId = 1, RentDate = new DateTime(2023,08,10)});
 
     }
-
-    private static void CarAddTest()
-    {
-        CarManager carManager = new CarManager(new EfCarDal());
-        carManager.Add(new Car { BrandId = 1, ColorId = 2, ModelYear = 2018, DailyPrice = 749, Description = "Toyata Coralla" });
-    }
-
-    private static void DetailsTest()
-    {
-        CarManager carsManager = new CarManager(new EfCarDal());
-        foreach (var Cars in carsManager.GetCarDetails())
-        {
-            Console.WriteLine(Cars.CarName + ":" + " " + Cars.BrandName + " " + "-" + Cars.ColorName + "-" + " " + "==>" + " " + Cars.DailyPrice + "TL");
-        }
-    }
-
-    private static void CarTest2()
-    {
-        CarManager carsManager = new CarManager(new EfCarDal());
-        foreach (var Cars in carsManager.GetAll())
-        {
-            Console.WriteLine(Cars);
-        }
-        Console.WriteLine("-----------------------------------------------");
-
-        foreach (var Cars in carsManager.GetAll())
-        {
-            Console.WriteLine(Cars.CarId + ":" + " " + Cars.Description + " " + "-" + Cars.ModelYear + "-" + " " + "==>" + " " + Cars.DailyPrice + "TL");
-        }
-        Console.WriteLine("-----------------------------------------------");
-    }
-
-    private static void CarTest()
-    {
-        CarManager carsManager = new CarManager(new EfCarDal());
-
-        foreach (var cars in carsManager.GetAll())
-        {
-            Console.WriteLine(cars.CarId + ":" + cars.Description + "-" + cars.ModelYear + "-" + " " + "==>" + " " + cars.DailyPrice + "TL");
-
-        }
-    }
+    
 }

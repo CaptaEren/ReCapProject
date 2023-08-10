@@ -10,7 +10,8 @@ namespace Entities.Concrete
     public class Rental : IEntity
     {
         public int RentalId { get; set; }
-        public DateOnly RentDate { get; set; }
-        public DateOnly RetunDate { get; set; }
+        public int CarId { get; set; }
+        public DateTime RentDate { get; set; }
+        public DateTime ReturnDate { get; set; }
     }
 }

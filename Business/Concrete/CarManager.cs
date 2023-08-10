@@ -43,7 +43,7 @@ namespace Business.Concrete
         
         public IDataResult<List<Car>> GetAll()
         {
-            return new SuccesDataResult<List<Car>>(_carDal.GetAll());
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll());
         }
 
         public IDataResult<Car> GetById(int carId)
@@ -52,12 +52,12 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<Car>("Check! Unvalıd Id ");
             }
-            return new SuccesDataResult<Car>(_carDal.Get(c => c.CarId == carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == carId));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccesDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
         public IResult Update(Car car)

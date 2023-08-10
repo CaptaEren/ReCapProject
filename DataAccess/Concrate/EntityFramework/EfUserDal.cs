@@ -12,5 +12,6 @@ namespace DataAccess.Concrate.EntityFramework
 {
     public class EfUserDal: EfEntityRepositoryBase<User, ReCapDbContext>,IUserDal
     {
+        
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrate.EntityFramework
 {
-    internal class EfCustomerDal: EfEntityRepositoryBase<Customer, ReCapDbContext>,ICustomerDal
+    public class EfCustomerDal: EfEntityRepositoryBase<Customer, ReCapDbContext>,ICustomerDal
     {
     }
 }
