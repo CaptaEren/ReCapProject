@@ -28,7 +28,6 @@ namespace Business.Concrete
             if (exist_Rental!=null)
             {
                 return new ErrorResult("Araç Halen Kullanımda dır!");
-                throw new Exception("Araç Halen Kullanımda dır!");
             }
             else
             {
